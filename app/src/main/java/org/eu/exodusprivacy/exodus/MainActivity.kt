@@ -98,8 +98,7 @@ class MainActivity : AppCompatActivity() {
             if (!config["app_setup"]?.enable!! &&
                 config["privacy_policy"]?.enable!! &&
                 !ExodusUpdateService.IS_SERVICE_RUNNING
-            )
-                {
+            ) {
                     Log.d(
                         TAG,
                         "Populating database for the first time."
