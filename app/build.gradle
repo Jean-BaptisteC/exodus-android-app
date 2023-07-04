@@ -81,7 +81,7 @@ android {
     lint {
         lintConfig file("lint.xml")
     }
-    namespace 'org.eu.exodus_privacy.exodusprivacy'
+    namespace 'org.eu.exodusprivacy.exodus'
 }
 
 kapt {
