@@ -41,7 +41,9 @@ class MainActivity : AppCompatActivity() {
             Log.d(TAG, "Observing Network Connection.")
             if (!connected) {
                 Snackbar.make(
-                    binding.fragmentCoordinator, R.string.not_connected, Snackbar.LENGTH_LONG
+                    binding.fragmentCoordinator,
+                    R.string.not_connected,
+                    Snackbar.LENGTH_LONG
                 ).setAction(R.string.settings) {
                     try {
                         startActivity(Intent(Settings.ACTION_WIRELESS_SETTINGS))
@@ -96,9 +98,10 @@ class MainActivity : AppCompatActivity() {
             if (!config["app_setup"]?.enable!! &&
                 config["privacy_policy"]?.enable!! &&
                 !ExodusUpdateService.IS_SERVICE_RUNNING
-            ) {
+            )
+            {
                 Log.d(
-                    TAG, "Populating database for the first time."
+                    TAG,"Populating database for the first time."
                 )
                 val intent = Intent(this, ExodusUpdateService::class.java)
                 intent.apply {
