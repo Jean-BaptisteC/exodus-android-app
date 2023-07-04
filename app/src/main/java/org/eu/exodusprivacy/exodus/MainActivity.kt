@@ -99,16 +99,16 @@ class MainActivity : AppCompatActivity() {
                 config["privacy_policy"]?.enable!! &&
                 !ExodusUpdateService.IS_SERVICE_RUNNING
             ) {
-                    Log.d(
-                        TAG,
-                        "Populating database for the first time."
-                    )
-                    val intent = Intent(this, ExodusUpdateService::class.java)
-                    intent.apply {
-                        action = ExodusUpdateService.FIRST_TIME_START_SERVICE
-                        startService(this)
-                    }
+                Log.d(
+                    TAG,
+                    "Populating database for the first time."
+                )
+                val intent = Intent(this, ExodusUpdateService::class.java)
+                intent.apply {
+                    action = ExodusUpdateService.FIRST_TIME_START_SERVICE
+                    startService(this)
                 }
+            }
         }
     }
 }
