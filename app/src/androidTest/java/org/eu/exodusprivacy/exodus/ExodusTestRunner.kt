@@ -1,4 +1,4 @@
-package org.eu.exodus_privacy.exodusprivacy
+package org.eu.exodusprivacy.exodus
 
 import android.app.Application
 import android.content.Context

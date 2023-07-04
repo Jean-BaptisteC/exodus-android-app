@@ -1,4 +1,4 @@
-package org.eu.exodus_privacy.exodusprivacy
+package org.eu.exodusprivacy.exodus
 
 import android.content.Context
 import androidx.datastore.preferences.core.stringPreferencesKey
@@ -9,9 +9,9 @@ import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
-import org.eu.exodus_privacy.exodusprivacy.manager.storage.DataStoreName
-import org.eu.exodus_privacy.exodusprivacy.manager.storage.ExodusConfig
-import org.eu.exodus_privacy.exodusprivacy.manager.storage.ExodusDataStoreRepository
+import org.eu.exodusprivacy.exodus.manager.storage.DataStoreName
+import org.eu.exodusprivacy.exodus.manager.storage.ExodusConfig
+import org.eu.exodusprivacy.exodus.manager.storage.ExodusDataStoreRepository
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

@@ -1,4 +1,4 @@
-package org.eu.exodus_privacy.exodusprivacy
+package org.eu.exodusprivacy.exodus
 
 import android.content.Context
 import androidx.test.platform.app.InstrumentationRegistry
@@ -15,9 +15,9 @@ import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import okhttp3.mockwebserver.SocketPolicy
-import org.eu.exodus_privacy.exodusprivacy.manager.network.ExodusAPIInterface
-import org.eu.exodus_privacy.exodusprivacy.manager.network.ExodusAPIRepository
-import org.eu.exodus_privacy.exodusprivacy.manager.network.ExodusModule
+import org.eu.exodusprivacy.exodus.manager.network.ExodusAPIInterface
+import org.eu.exodusprivacy.exodus.manager.network.ExodusAPIRepository
+import org.eu.exodusprivacy.exodus.manager.network.ExodusModule
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Before

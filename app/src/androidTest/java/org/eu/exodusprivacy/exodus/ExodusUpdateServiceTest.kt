@@ -1,4 +1,4 @@
-package org.eu.exodus_privacy.exodusprivacy
+package org.eu.exodusprivacy.exodus
 
 import android.content.ComponentName
 import android.content.Context
@@ -9,7 +9,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ServiceTestRule
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
-import org.eu.exodus_privacy.exodusprivacy.manager.database.app.ExodusApplication
+import org.eu.exodusprivacy.exodus.manager.database.app.ExodusApplication
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

@@ -1,4 +1,4 @@
-package org.eu.exodus_privacy.exodusprivacy
+package org.eu.exodusprivacy.exodus
 
 import android.content.Context
 import android.content.res.AssetManager
@@ -11,12 +11,12 @@ import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.runTest
-import org.eu.exodus_privacy.exodusprivacy.manager.database.ExodusDatabase
-import org.eu.exodus_privacy.exodusprivacy.manager.database.ExodusDatabaseRepository
-import org.eu.exodus_privacy.exodusprivacy.manager.database.app.ExodusApplication
-import org.eu.exodus_privacy.exodusprivacy.manager.database.tracker.TrackerData
-import org.eu.exodus_privacy.exodusprivacy.objects.Permission
-import org.eu.exodus_privacy.exodusprivacy.objects.Source
+import org.eu.exodusprivacy.exodus.manager.database.ExodusDatabase
+import org.eu.exodusprivacy.exodus.manager.database.ExodusDatabaseRepository
+import org.eu.exodusprivacy.exodus.manager.database.app.ExodusApplication
+import org.eu.exodusprivacy.exodus.manager.database.tracker.TrackerData
+import org.eu.exodusprivacy.exodus.objects.Permission
+import org.eu.exodusprivacy.exodus.objects.Source
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule

@@ -1,4 +1,4 @@
-package org.eu.exodus_privacy.exodusprivacy
+package org.eu.exodusprivacy.exodus
 
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
@@ -9,8 +9,8 @@ import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.runTest
-import org.eu.exodus_privacy.exodusprivacy.manager.packageinfo.ExodusPackageRepository
-import org.eu.exodus_privacy.exodusprivacy.utils.getInstalledPackagesList
+import org.eu.exodusprivacy.exodus.manager.packageinfo.ExodusPackageRepository
+import org.eu.exodusprivacy.exodus.utils.getInstalledPackagesList
 import org.junit.Rule
 import org.junit.Test
 import javax.inject.Inject
