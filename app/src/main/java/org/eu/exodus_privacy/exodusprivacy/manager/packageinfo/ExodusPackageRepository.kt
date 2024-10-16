@@ -38,7 +38,7 @@ class ExodusPackageRepository @Inject constructor(
             val app = Application(
                 packageInfo.applicationInfo?.loadLabel(packageManager).toString(),
                 packageInfo.packageName,
-                packageInfo.applicationInfo?.loadIcon(packageManager)
+                packageInfo.applicationInfo?.loadIcon(packageManager)?
                     .toBitmap(resolution, resolution),
                 packageInfo.versionName ?: "",
                 PackageInfoCompat.getLongVersionCode(packageInfo),
@@ -89,7 +89,7 @@ class ExodusPackageRepository @Inject constructor(
             Log.d(TAG, "Permission List: $permissionList")
             packagesWithPermissions.forEach { packageInfo ->
                 permissionMap[packageInfo.packageName] = permissionList.filter { perm ->
-                    packageInfo.requestedPermissions.any { reqPerm ->
+                    packageInfo.requestedPermissions?.any { reqPerm ->
                         reqPerm == perm.longName
                     }
                 }
@@ -143,10 +143,10 @@ class ExodusPackageRepository @Inject constructor(
         val appInfo = packageInfo.applicationInfo
         val packageName = packageInfo.packageName
         return (
-            appInfo.flags and ApplicationInfo.FLAG_SYSTEM == 0 ||
-                appInfo.flags and ApplicationInfo.FLAG_UPDATED_SYSTEM_APP != 0 ||
+            appInfo?.flags and ApplicationInfo.FLAG_SYSTEM == 0 ||
+                appInfo?.flags and ApplicationInfo.FLAG_UPDATED_SYSTEM_APP != 0 ||
                 packageManager.getLaunchIntentForPackage(packageName) != null
             ) &&
-            appInfo.enabled
+            appInfo?.enabled
     }
 }
