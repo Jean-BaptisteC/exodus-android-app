@@ -73,7 +73,7 @@ class ExodusPackageRepository @Inject constructor(
             val permissionInfoSet = packagesWithPermissions.fold(
                 hashSetOf<String>(),
             ) { acc, next ->
-                next.requestedPermissions?.let{ acc.addAll(it) }
+                next.requestedPermissions?.let { acc.addAll(it) }
                 acc
             }
             Log.d(TAG, "Permission Info Set: $permissionInfoSet")
