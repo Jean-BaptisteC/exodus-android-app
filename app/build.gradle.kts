@@ -15,12 +15,12 @@ configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
 
 android {
     namespace = "org.eu.exodus_privacy.exodusprivacy"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "org.eu.exodus_privacy.exodusprivacy"
         minSdk = 23
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 23
         versionName = "3.3.2"
         testInstrumentationRunner = "org.eu.exodus_privacy.exodusprivacy.ExodusTestRunner"
