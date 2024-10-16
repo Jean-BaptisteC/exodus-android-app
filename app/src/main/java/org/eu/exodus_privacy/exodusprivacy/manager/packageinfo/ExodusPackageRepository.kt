@@ -36,9 +36,9 @@ class ExodusPackageRepository @Inject constructor(
         validPackages.forEach { packageInfo ->
             Log.d(TAG, "Found package: ${packageInfo.packageName}.")
             val app = Application(
-                packageInfo.applicationInfo.loadLabel(packageManager).toString(),
+                packageInfo.applicationInfo?.loadLabel(packageManager).toString(),
                 packageInfo.packageName,
-                packageInfo.applicationInfo.loadIcon(packageManager)
+                packageInfo.applicationInfo?.loadIcon(packageManager)
                     .toBitmap(resolution, resolution),
                 packageInfo.versionName ?: "",
                 PackageInfoCompat.getLongVersionCode(packageInfo),
@@ -73,9 +73,7 @@ class ExodusPackageRepository @Inject constructor(
             val permissionInfoSet = packagesWithPermissions.fold(
                 hashSetOf<String>(),
             ) { acc, next ->
-                if (next.requestedPermissions != null) {
-                    acc.addAll(next.requestedPermissions)
-                }
+                next.requestedPermissions?.let{ acc.addAll(it) }
                 acc
             }
             Log.d(TAG, "Permission Info Set: $permissionInfoSet")
