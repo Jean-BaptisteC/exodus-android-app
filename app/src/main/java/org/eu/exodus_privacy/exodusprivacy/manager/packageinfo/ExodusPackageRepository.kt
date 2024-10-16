@@ -38,8 +38,8 @@ class ExodusPackageRepository @Inject constructor(
             val app = Application(
                 packageInfo.applicationInfo?.loadLabel(packageManager).toString(),
                 packageInfo.packageName,
-                packageInfo.applicationInfo?.loadIcon(packageManager)?
-                    .toBitmap(resolution, resolution),
+                packageInfo.applicationInfo?.loadIcon(packageManager)
+                    ?.toBitmap(resolution, resolution),
                 packageInfo.versionName ?: "",
                 PackageInfoCompat.getLongVersionCode(packageInfo),
                 permissionsMap[packageInfo.packageName] ?: emptyList(),
