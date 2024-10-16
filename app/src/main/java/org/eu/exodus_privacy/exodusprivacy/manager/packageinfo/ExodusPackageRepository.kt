@@ -140,13 +140,13 @@ class ExodusPackageRepository @Inject constructor(
     }
 
     private fun validPackage(packageInfo: PackageInfo, packageManager: PackageManager): Boolean {
-        val appInfo = packageInfo.applicationInfo
+        val appInfo = packageInfo.applicationInfo?
         val packageName = packageInfo.packageName
         return (
-            appInfo?.flags and ApplicationInfo.FLAG_SYSTEM == 0 ||
-                appInfo?.flags and ApplicationInfo.FLAG_UPDATED_SYSTEM_APP != 0 ||
+            appInfo.flags and ApplicationInfo.FLAG_SYSTEM == 0 ||
+                appInfo.flags and ApplicationInfo.FLAG_UPDATED_SYSTEM_APP != 0 ||
                 packageManager.getLaunchIntentForPackage(packageName) != null
             ) &&
-            appInfo?.enabled
+            appInfo.enabled
     }
 }
