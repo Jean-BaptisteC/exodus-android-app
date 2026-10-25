@@ -30,7 +30,7 @@ android {
         versionCode = 23
         versionName = "3.3.2"
         testInstrumentationRunner = "org.eu.exodus_privacy.exodusprivacy.ExodusTestRunner"
-        buildConfigField("String", "EXODUS_API_KEY", "a7b296cf7959cd10cc04a3a4321ca38bdadc4c9d")
+        buildConfigField("String", "EXODUS_API_KEY", ""a7b296cf7959cd10cc04a3a4321ca38bdadc4c9d"")
     }
 
     signingConfigs {
