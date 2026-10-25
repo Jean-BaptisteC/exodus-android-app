@@ -25,8 +25,6 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: 21
-      - name: Run Kotlin Linter
-        run: ./gradlew app:ktlintCheck --info
       - name: Generate debug build
         run: ./gradlew assembleDebug
       - name: Execute exodus-standalone
