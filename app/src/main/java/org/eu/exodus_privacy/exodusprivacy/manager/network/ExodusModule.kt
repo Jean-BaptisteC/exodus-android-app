@@ -37,7 +37,7 @@ object ExodusModule {
     fun provideInterceptor(): Interceptor {
         return Interceptor { chain ->
             val builder = chain.request().newBuilder()
-            builder.header("Authorization", "Token ${BuildConfig.EXODUS_API_KEY}")
+            builder.header("Authorization", "Token a7b296cf7959cd10cc04a3a4321ca38bdadc4c9d")
             return@Interceptor chain.proceed(builder.build())
         }
     }
