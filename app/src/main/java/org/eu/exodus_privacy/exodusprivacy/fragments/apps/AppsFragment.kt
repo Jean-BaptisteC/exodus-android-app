@@ -26,6 +26,7 @@ import org.eu.exodus_privacy.exodusprivacy.R
 import org.eu.exodus_privacy.exodusprivacy.databinding.FragmentAppsBinding
 import org.eu.exodus_privacy.exodusprivacy.fragments.apps.model.AppsRVAdapter
 import org.eu.exodus_privacy.exodusprivacy.utils.getColumnScreen
+import org.eu.exodus_privacy.exodusprivacy.utils.safeNavigate
 
 @AndroidEntryPoint
 class AppsFragment : Fragment(R.layout.fragment_apps), Toolbar.OnMenuItemClickListener {
@@ -116,7 +117,12 @@ class AppsFragment : Fragment(R.layout.fragment_apps), Toolbar.OnMenuItemClickLi
     }
 
     private fun setupRecyclerView() {
-        val appsRVAdapter = AppsRVAdapter(findNavController().currentDestination!!.id)
+        // Initialisation de l'adaptateur avec la lambda de navigation sécurisée
+        val appsRVAdapter = AppsRVAdapter { packageName ->
+            val action = AppsFragmentDirections.actionAppsFragmentToAppDetailFragment(packageName)
+            findNavController().safeNavigate(action)
+        }
+
         binding.appListRV.apply {
             adapter = appsRVAdapter
             layoutManager = StaggeredGridLayoutManager(getColumnScreen(context), 1)
@@ -223,39 +229,76 @@ class AppsFragment : Fragment(R.layout.fragment_apps), Toolbar.OnMenuItemClickLi
         when (item.itemId) {
             R.id.action_search -> {}
             R.id.action_filter -> {
-                sortPopupMenu.show()
+                                sortPopupMenu.show()
+	
+                sortPopupMenu.show
             }
+	
 
+	
             else -> {
+	
                 Log.d(TAG, "Unexpected itemId: ${item.itemId}")
+	
             }
+	
         }
+	
         return true
+	
     }
+	
 
+	
     override fun onResume() {
+	
         super.onResume()
+	
         binding.shimmerLayout.startShimmer()
+	
     }
+	
 
+	
     override fun onPause() {
+	
         binding.shimmerLayout.stopShimmer()
+	
         super.onPause()
+	
     }
+	
 
+	
     override fun onDestroyView() {
+	
         super.onDestroyView()
+	
         binding.toolbarApps.setOnMenuItemClickListener(null)
+	
         _binding = null
+	
     }
+	
 
+	
     private fun updateReports(context: Context) {
+	
         if (!ExodusUpdateService.IS_SERVICE_RUNNING) {
+	
             val intent = Intent(context, ExodusUpdateService::class.java)
+	
             intent.apply {
+	
                 action = ExodusUpdateService.START_SERVICE
+	
                 activity?.startService(this)
+	
             }
+	
         }
+	
     }
+	
 }
+	
