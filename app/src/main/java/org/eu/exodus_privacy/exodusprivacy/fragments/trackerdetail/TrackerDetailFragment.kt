@@ -25,6 +25,7 @@ import org.eu.exodus_privacy.exodusprivacy.fragments.apps.model.AppsRVAdapter
 import org.eu.exodus_privacy.exodusprivacy.utils.copyToClipboard
 import org.eu.exodus_privacy.exodusprivacy.utils.getColumnScreen
 import org.eu.exodus_privacy.exodusprivacy.utils.openURL
+import org.eu.exodus_privacy.exodusprivacy.utils.safeNavigate
 import java.util.regex.Pattern
 import javax.inject.Inject
 
@@ -142,16 +143,20 @@ class TrackerDetailFragment : Fragment(R.layout.fragment_tracker_detail) {
             }
         }
 
-        viewModel.appsList.observe(viewLifecycleOwner) {
-            if (!it.isNullOrEmpty()) {
-                val appsRVAdapter = AppsRVAdapter(findNavController().currentDestination!!.id)
+        viewModel.appsList.observe(viewLifecycleOwner) { appList ->
+            if (!appList.isNullOrEmpty()) {
+                // Instanciation de l'adaptateur avec la navigation sécurisée propre à ce fragment
+                val appsRVAdapter = AppsRVAdapter { packageName ->
+                    val action = TrackerDetailFragmentDirections.actionTrackerDetailFragmentToAppDetailFragment(packageName)
+                    findNavController().safeNavigate(action)
+                }
                 binding.appsListTV.visibility = View.VISIBLE
                 binding.appsListRV.apply {
                     visibility = View.VISIBLE
                     adapter = appsRVAdapter
                     layoutManager = StaggeredGridLayoutManager(getColumnScreen(context), 1)
                 }
-                appsRVAdapter.submitList(it)
+                appsRVAdapter.submitList(appList)
             }
         }
     }
