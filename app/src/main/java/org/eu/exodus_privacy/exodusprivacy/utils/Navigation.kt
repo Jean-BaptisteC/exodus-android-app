@@ -1,6 +1,5 @@
 package org.eu.exodus_privacy.exodusprivacy.utils
 
-import android.util.Log
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import androidx.navigation.NavOptions
@@ -18,13 +17,7 @@ fun NavController.safeNavigate(
     direction: NavDirections,
     navOptions: NavOptions = animatedNavOptions,
 ) {
-    try {
-        if (currentDestination != null) {
-            navigate(direction, navOptions)
-        }
-    } catch (e: IllegalArgumentException) {
-        Log.w("SafeNavigate", "Navigation ignorée (clic multiple) : ${e.message}")
-    } catch (e: IllegalStateException) {
-        Log.w("SafeNavigate", "NavController détaché : ${e.message}")
+    currentDestination?.getAction(direction.actionId)?.run {
+        navigate(direction, navOptions = navOptions)
     }
 }
