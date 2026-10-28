@@ -114,9 +114,6 @@ class ExodusUpdateService : LifecycleService() {
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         super.onStartCommand(intent, flags, startId)
-        if (!job.isActive) {
-            job = SupervisorJob()
-            serviceScope = CoroutineScope(job + Dispatchers.IO)
         }
         intent?.let {
             when (it.action) {
