@@ -22,6 +22,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import org.eu.exodus_privacy.exodusprivacy.manager.database.ExodusDatabaseRepository
@@ -47,8 +48,8 @@ class ExodusUpdateService : LifecycleService() {
 
     private val TAG = ExodusUpdateService::class.java.simpleName
 
-    private val job = SupervisorJob()
-    private val serviceScope = CoroutineScope(job)
+    private var job = SupervisorJob()
+    private var serviceScope = CoroutineScope(job + Dispatchers.IO)
 
     // Tracker and Apps
     private val trackersList = mutableListOf<TrackerData>()
@@ -113,6 +114,10 @@ class ExodusUpdateService : LifecycleService() {
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         super.onStartCommand(intent, flags, startId)
+        if (!job.isActive) {
+            job = SupervisorJob()
+            serviceScope = CoroutineScope(job + Dispatchers.IO)
+        }
         intent?.let {
             when (it.action) {
                 FIRST_TIME_START_SERVICE -> {
@@ -163,6 +168,11 @@ class ExodusUpdateService : LifecycleService() {
                         this,
                     ),
                 )
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    startForeground(SERVICE_ID, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC)
+                } else {
+                    startForeground(SERVICE_ID, notification)
+                }
             }
 
             // Update all database
