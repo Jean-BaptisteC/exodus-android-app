@@ -114,7 +114,6 @@ class ExodusUpdateService : LifecycleService() {
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         super.onStartCommand(intent, flags, startId)
-        }
         intent?.let {
             when (it.action) {
                 FIRST_TIME_START_SERVICE -> {
